@@ -152,6 +152,15 @@ const snake = {
   	}
   },
 
+  startMoving(eventObject){
+  	if(!controller.isProperCode(eventObject.code)) return;
+  	
+		snake.changeDirection(eventObject);
+		snake.moving = setInterval(snake.step, gameMode.snakeSpeed);
+		window.removeEventListener("keydown",snake.startMoving);
+		window.addEventListener("keydown",snake.changeDirection);
+  },
+
 	step(){
 
 		if(snake.lose(snake)){
@@ -167,18 +176,10 @@ const snake = {
 	  snake.addHead(snake);
 	},
 
-	turn(eventObject){
-		if(controller.isProperCode(eventObject.code)){
-			clearInterval(snake.moving);
-		  snake.changeDirection(eventObject.code, snake);
-		  snake.moving = setInterval(snake.step, gameMode.snakeSpeed);
-	  }
-	},
-
-	changeDirection(code){
+	changeDirection(eventObject){
 		for(const temp in controller.buttonsDirection)
 		{
-			if(temp === code)
+			if(temp === eventObject.code)
 			{
 				snake.direction = controller.buttonsDirection[temp][1];
 				snake.directionName = controller.buttonsDirection[temp][0];
@@ -231,7 +232,7 @@ function gameStart(){
 	gameField.createField();
 	snake.snakeSpawn();
 	berry.berrySpawn();
-	window.addEventListener("keydown",snake.turn);
+	window.addEventListener("keydown",snake.startMoving);
 }
 
 gameStart();
