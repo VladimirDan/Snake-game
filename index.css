@@ -1,0 +1,116 @@
+h1{
+	text-align:center;
+}
+.table{
+	display:table;
+	margin-left:auto;
+	margin-right:auto;
+}
+.tableRow{
+	display:table-row;
+}
+
+.none{
+	display: table-cell;
+	width:50px;
+	height:50px;
+	background-color:gray;
+	border:black 1px dashed;
+}
+
+.berry{
+	background-color:#B83B11;
+	display: table-cell;
+	width:50px;
+	height:50px;
+	border:black 1px dashed;
+}
+
+.snake{
+	background-color:#00A03E;
+	display: table-cell;
+	width:50px;
+	height:50px;
+	border:black 1px dashed;
+}
+
+
+.scorePanel{
+	position: absolute;
+	left: 740px;
+	top:55px;
+	text-decoration: underline;
+	font-weight: bold;
+	font-size:20px;
+	font-family: Verdana,Arial,sans-serif;
+}
+
+#infoPanel{
+	position: absolute;
+	left: 1090px;
+	top:55px;
+	font-family: Arial,sans-serif;
+	}
+#gameOver{
+	color:red;
+	z-index: 2;
+    position:absolute;
+    top:320px;
+    left:868px;
+    text-shadow: black 0 0 4px;
+    font-size:30px;
+}
+
+input{
+	height:50px;
+	width:100px;
+	font-size:30px;
+}
+#easy{
+	color:green;
+}
+#medium{
+	width:150px;
+	color:yellow;
+	text-shadow: black 0 0 4px;
+}
+#hard{
+	color:red;
+}
+.options{
+	position:absolute;
+	top:610px;
+	left:860px;
+	vertical-align: middle;
+	/*top:300px;
+	left:1075px;
+	-webkit-transform: rotate(90deg);*/
+}
+
+#start{
+	position:absolute;
+	top:290px;
+	left:910px;
+	height:100px;
+}
+.startDown{
+	position:absolute;
+	top:290px;
+	left:910px;
+	height:100px;
+	z-index:-1;
+}
+
+#restart{
+	position:absolute;
+	top:610px;
+	left:710px;
+}
+
+.snakeHead{
+	background-color:#49B811;
+	display: table-cell;
+	width:50px;
+	height:50px;
+	border:black 1px dashed;
+}
