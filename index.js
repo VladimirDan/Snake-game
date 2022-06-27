@@ -42,9 +42,9 @@ const gameField = {
 	},
 
   randomEmptyCellCoords(){
-  	if(!gameField.isThereEmptyCell()) gameField.gameLost(gameField);
+  	if(!gameField.isThereEmptyCell()) gameField.gameLost();
 
-		const coords = gameField.randomCellCoords(gameField);
+		const coords = gameField.randomCellCoords();
 		return gameField.cells[coords].item === items.none ? coords : gameField.randomEmptyCellCoords();
   },
 
@@ -70,7 +70,7 @@ const gameField = {
   },
 
   gameLost(){
-  	gameField.gameStop(snake);
+  	gameField.gameStop();
   	gameField.showMessage("You lost");
   	window.addEventListener("keydown",gameField.windowReload);
   },
@@ -168,10 +168,10 @@ const snake = {
 	},
 
 	turn(eventObject){
-		if(controller.isProperCode(eventObject.code, snake)){
+		if(controller.isProperCode(eventObject.code)){
 			clearInterval(snake.moving);
 		  snake.changeDirection(eventObject.code, snake);
-		  snake.moving = setInterval(snake.step, gameMode.snakeSpeed, snake);
+		  snake.moving = setInterval(snake.step, gameMode.snakeSpeed);
 	  }
 	},
 
@@ -213,13 +213,13 @@ const berry = {
 	berryCoords: 0,
 
 	berrySpawn(){
-		berry.berryCoords = gameField.randomEmptyCellCoords(gameField);
+		berry.berryCoords = gameField.randomEmptyCellCoords();
 		gameField.changeCellBackground(berry.berryCoords, backgrounds.berry);
 		gameField.changeCell(berry.berryCoords, items.berry)
 	},
 	berryEat(){
 		if(snake.snakeHead === berry.berryCoords){
-			berry.berrySpawn(berry);
+			berry.berrySpawn();
 			gameMode.score += 100;
 			gameField.showMessage(gameMode.score);
 			return true;
